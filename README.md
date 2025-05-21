@@ -1,11 +1,9 @@
-# 🐍 Flask + PostgreSQL Web App
+# IMDB Quiz
 
-A minimal full-stack starter project using:
-
-- 🧠 Python + Flask
-- 🗃️ PostgreSQL (via SQLAlchemy)
-- 🌐 HTML + CSS3
-- 🔑 Environment Variables via `.env`
+- Python + Flask
+- PostgreSQL (via SQLAlchemy)
+- HTML + CSS3
+- Environment Variables via `.env`
 
 ---
 

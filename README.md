@@ -23,7 +23,7 @@ A minimal full-stack starter project using:
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
+git clone https://github.com/Alfemil99/IMDBQuiz/tree/main
 cd <your-repo>
 ```
 

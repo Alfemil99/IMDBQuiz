@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Game Over</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="card">
+    <h2 style="color: #ee4540;">💀 Game Over</h2>
+    <p>The correct movie was:</p>
+    <h3>{{ correct_movie.title }}</h3>
+
+    <img class="poster" src="{{ correct_movie.poster_link }}" alt="Movie Poster">
+
+    <p style="margin-top: 1.5rem;">Your final score: <strong>{{ score }}</strong></p>
+
+    <a href="{{ url_for('main.game') }}" class="hint-btn">Try Again</a>
+  </div>
+
+</body>
+</html>

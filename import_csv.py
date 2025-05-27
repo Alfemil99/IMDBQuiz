@@ -14,6 +14,7 @@ engine = create_engine(db_url)
 df = pd.read_csv("IMDB.csv", encoding="utf-8")
 
 df = df.rename(columns={
+    "id": "id",
     "Poster_Link": "poster_link",
     "Series_Title": "title",
     "Released_Year": "year",

@@ -4,7 +4,14 @@
     <title>Test App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<style>
+</style>
 <body>
-    <h1>Hello from Flask + PostgreSQL!</h1>
+    <div class="card">
+        <h1>Guess the movie!</h1>
+        <div>
+            <a href="/game" class="hint-btn" >START</a href>
+        </div>
+    </div>
 </body>
 </html>

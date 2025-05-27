@@ -1,9 +1,8 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
+# Load .env file if it exists
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URI = (
-    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
-    f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-)
+# Example: postgresql://user:password@localhost:5432/myappdb
+SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "postgresql://myuser:mypassword@localhost:5432/myappdb")

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="card">
+    <h2 style="margin-bottom: 1rem;">
+      {% if result == 'correct' %}
+        <span style="color: #00ff99;">✅ Correct!</span>
+      {% else %}
+        <span style="color: #ee4540;">❌ Wrong!</span>
+      {% endif %}
+    </h2>
+
+    <p>Correct movie was:</p>
+    <h3>{{ correct_movie.title }}</h3>
+
+    <img class="poster" src="{{ correct_movie.poster_link }}" alt="Poster">
+    
+    <br><br>
+
+    <a href="{{ url_for('main.game') }}" class="hint-btn">Next Round</a>
+  </div>
+
+</body>
+</html>

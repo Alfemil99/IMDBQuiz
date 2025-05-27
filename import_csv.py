@@ -41,4 +41,4 @@ df["imdb_rating"] = pd.to_numeric(df["imdb_rating"], errors="coerce")
 # Upload to database (append only)
 df.to_sql("movies", engine, if_exists="append", index=False)
 
-print("✅ CSV data successfully added to movies table.")
+print("CSV data added to movies table.")

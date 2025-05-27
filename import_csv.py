@@ -11,7 +11,7 @@ db_url = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.ge
 engine = create_engine(db_url)
 
 # Load and clean CSV
-df = pd.read_csv("imdb_top_1000.csv", encoding="utf-8")
+df = pd.read_csv("IMDB.csv", encoding="utf-8")
 
 df = df.rename(columns={
     "Poster_Link": "poster_link",

@@ -25,7 +25,7 @@ def _generate_hints(movie: Movie) -> list[str]:
     """
     return [
         f"Released in {movie.year}",
-        f"Gross: {movie.gross}",
+        f"Gross: {movie.gross}$",
         f"Top-billed actor: {movie.star1}",
         f"Director: {movie.director}",
         f"Genre: {movie.genre}",

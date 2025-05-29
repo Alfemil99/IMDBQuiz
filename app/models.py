@@ -20,3 +20,10 @@ class Movie(db.Model):
     star4 = db.Column(db.Text)
     votes = db.Column(db.Integer)
     gross = db.Column(db.Text)
+
+class LeaderboardEntry:
+    def __init__(self, data):
+        self.id = data.get('id')
+        self.username = data.get('username')
+        self.score = data.get('score')
+        self.played_at = data.get('played_at')

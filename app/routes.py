@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from app.models import Movie
 from app.game import get_round_data
+from app.leaderboard import insert_score, get_top_scores
 
 main = Blueprint("main", __name__)
 
@@ -8,6 +9,13 @@ main = Blueprint("main", __name__)
 def index():
     return render_template("index.html")
 
+@main.route("/start", methods=["GET", "POST"])
+def start():
+    if request.method == "POST":
+        session["username"] = request.form["username"]
+        session["score"] = 0
+        return redirect(url_for("main.game"))
+    return render_template("start.html")
 
 @main.route("/movies")
 def movie_list():
@@ -81,8 +89,13 @@ def result():
 
     if result == "wrong":
         final_score = score
+        username = session.get("username", "Anonymous")
+        insert_score(username, final_score)
+        leaderboard = get_top_scores()
         session.clear()
-        return render_template("gameover.html", score=final_score, correct_movie=correct_movie)
+        return render_template("gameover.html", score=final_score, correct_movie=correct_movie, leaderboard=leaderboard)
+
+
 
     # hvis korrekt → nulstil kun rundedata
     session.pop("round", None)

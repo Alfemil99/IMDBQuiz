@@ -17,6 +17,13 @@
 
     <p style="margin-top: 1.5rem;">Your final score: <strong>{{ score }}</strong></p>
 
+    <h2>🏆 Leaderboard</h2>
+      <ol>
+        {% for entry in leaderboard %}
+          <li>{{ entry.username }} — {{ entry.score }}</li>
+        {% endfor %}
+      </ol>
+
     <a href="{{ url_for('main.game') }}" class="hint-btn">Try Again</a>
   </div>
 

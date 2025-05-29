@@ -3,12 +3,18 @@ from app.models import LeaderboardEntry
 
 
 def insert_score(username, score):
-    sql = """
-    INSERT INTO leaderboard (username, score)
-    VALUES (%s, %s)
-    """
-    db_cursor.execute(sql, (username, score))
-    conn.commit()
+    try:
+        sql = """
+        INSERT INTO leaderboard (username, score)
+        VALUES (%s, %s)
+        """
+        db_cursor.execute(sql, (username, score))
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        print("Error inserting score:", e)
+        raise
+
 
 
 def get_top_scores(limit=10):

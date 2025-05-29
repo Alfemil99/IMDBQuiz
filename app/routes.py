@@ -25,6 +25,9 @@ def movie_list():
 
 @main.route("/game")
 def game():
+    if "username" not in session:
+        return redirect(url_for("main.index"))
+
     if "round" not in session or "round_score" not in session:
         session["round"] = get_round_data()
         session["hints_shown"] = 1        # første hint vises gratis

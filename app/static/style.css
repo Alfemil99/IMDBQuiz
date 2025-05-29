@@ -216,3 +216,20 @@ input[type="text"] {
     padding: 0.6rem 1.2rem;
   }
 }
+
+
+.flash-container {
+  margin: 1rem auto;
+  max-width: 500px;
+  padding: 0.8rem 1rem;
+  background-color: rgba(249, 109, 0, 0.2); /* orange alert look */
+  border-left: 5px solid var(--third-color);
+  color: var(--fourth-color);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.flash-message {
+  margin: 0;
+  font-weight: bold;
+}

@@ -4,14 +4,15 @@
     <title>Test App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<style>
-</style>
 <body>
     <div class="card">
         <h1>Guess the movie!</h1>
-        <div>
-            <a href="/game" class="hint-btn" >START</a href>
-        </div>
+
+        <form action="/game" method="GET">
+            <label for="username">Enter your name:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+            <button type="submit" class="hint-btn">START</button>
+        </form>
     </div>
 </body>
 </html>

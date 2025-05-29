@@ -9,31 +9,31 @@
   
 </head>
 <body>
-  <div class="animated-bg"></div>
-  <!-- LOGO placeres centralt -->
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    <div class="animated-bg"></div>
 
-  <h1>Round Points: {{ round_score }} | Total Score: {{ score }}</h1>
+<div class="card">
 
-  <div class="hint-box">
-    {% for i in range(hints_shown) %}
-      <div><strong>Hint {{ i+1 }}:</strong> {{ round['hints'][i] }}</div>
-    {% endfor %}
+    <h1>Round Points: {{ round_score }} | Total Score: {{ score }}</h1>
 
-    {% if hints_shown < 5 %}
-      <a class="hint-btn" href="{{ url_for('main.reveal_hint') }}">
-        Hint {{ hints_shown+1 }} <span style="float:right;">: -100 pts</span>
-      </a>
-    {% endif %}
-  </div>
+    <div class="hint-box">
+      {% for i in range(hints_shown) %}
+        <div><strong>Hint {{ i+1 }}:</strong> {{ round['hints'][i] }}</div>
+      {% endfor %}
 
-  <div class="options">
-    {% for option in options %}
-      <a class="movie-btn" href="{{ url_for('main.guess', movie_id=option.id) }}">
-        {{ option.title }}
-      </a>
-    {% endfor %}
-  </div>
+      {% if hints_shown < 5 %}
+        <a class="hint-btn" href="{{ url_for('main.reveal_hint') }}">
+          Hint {{ hints_shown+1 }} <span style="float:right;">: -100 pts</span>
+        </a>
+      {% endif %}
+    </div>
 
+    <div class="options">
+      {% for option in options %}
+        <a class="movie-btn" href="{{ url_for('main.guess', movie_id=option.id) }}">
+          {{ option.title }}
+        </a>
+      {% endfor %}
+    </div>
+</div>
 </body>
 </html>

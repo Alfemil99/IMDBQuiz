@@ -24,7 +24,7 @@ def _generate_hints(movie: Movie) -> list[str]:
     Returnerer 5 hints baseret på filmen.
     """
     return [
-        f"Released in {movie.year}",
+        f"Released in {int(movie.year)}",
         f"Gross: {movie.gross}$",
         f"Top-billed actor: {movie.star1}",
         f"Director: {movie.director}",

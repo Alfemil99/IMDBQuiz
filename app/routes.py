@@ -7,7 +7,8 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def index():
-    return render_template("index.html")
+    leaderboard = get_top_scores()
+    return render_template("index.html", leaderboard=leaderboard)
 
 @main.route("/start", methods=["GET", "POST"])
 def start():
@@ -16,12 +17,6 @@ def start():
         session["score"] = 0
         return redirect(url_for("main.game"))
     return render_template("start.html")
-
-@main.route("/movies")
-def movie_list():
-    movies = Movie.query.limit(20).all()
-    return render_template("movies.html", movies=movies)
-
 
 @main.route("/game")
 def game():
@@ -97,8 +92,6 @@ def result():
         leaderboard = get_top_scores()
         session.clear()
         return render_template("gameover.html", score=final_score, correct_movie=correct_movie, leaderboard=leaderboard)
-
-
 
     # hvis korrekt → nulstil kun rundedata
     session.pop("round", None)

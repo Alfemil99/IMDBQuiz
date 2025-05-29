@@ -1,29 +1,19 @@
+/* ----------- Base Layout ----------- */
 body {
   margin: 0;
-  padding: 2rem;
-  height: 80vh;
-  overflow: hidden;
+  padding: 1rem;
+  min-height: 100vh;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   background: radial-gradient(ellipse at center, #2d132c 0%, #801336 40%, #c72c41 70%, #ee4540 100%);
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   color: white;
   text-align: center;
-  flex-direction: column;
 }
 
-h1 {
-  margin-top: 0.5rem;
-}
-
-.hint-box {
-  padding: 1rem;
-  margin: 2rem auto;
-  width: 60%;
-}
-
-/* Animeret baggrund */
+/* ----------- Animated Background ----------- */
 .animated-bg {
   position: fixed;
   top: 0;
@@ -40,22 +30,53 @@ h1 {
 }
 
 @keyframes moveBackground {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-25%, -25%) scale(1.2);
-  }
-  100% {
-    transform: translate(-10%, -30%) scale(1.1);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-25%, -25%) scale(1.2); }
+  100% { transform: translate(-10%, -30%) scale(1.1); }
 }
 
-.hint-btn {
+/* ----------- Card Containers ----------- */
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  margin: 3rem auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ----------- Headings ----------- */
+h1, h2 {
+  margin: 1rem 0;
+}
+
+/* ----------- Logo ----------- */
+.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+/* ----------- Hint Box ----------- */
+.hint-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* ----------- Buttons ----------- */
+.hint-btn,
+button,
+input[type="submit"] {
   display: inline-block;
   margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.4rem;
   font-weight: bold;
+  font-size: 1rem;
   border: 2px solid #ee4540;
   border-radius: 12px;
   color: #ee4540;
@@ -65,14 +86,26 @@ h1 {
   transition: all 0.2s ease;
 }
 
-.hint-btn:hover {
+.hint-btn:hover,
+button:hover,
+input[type="submit"]:hover {
   background-color: rgba(238, 69, 64, 0.15);
-  transform: scale(1.03);
+  transform: scale(1.05);
+}
+
+/* ----------- Movie Option Buttons ----------- */
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  justify-items: center;
 }
 
 .movie-btn {
   width: 100%;
-  max-width: 260px;
   padding: 1.2rem 1rem;
   border: 2px solid white;
   border-radius: 12px;
@@ -91,62 +124,86 @@ h1 {
   transform: scale(1.03);
 }
 
-.logo {
-  width: 150px;
-  display: block;
-  margin: 0 auto 2rem;
+/* ----------- Poster Image ----------- */
+.poster {
+  width: 40%;
+  max-width: 250px;
+  margin-top: 1rem;
+  border-radius: 8px;
 }
 
-.options {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  justify-items: center;
+/* ----------- Leaderboard Table ----------- */
+.leaderboard-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+  width: 100%;
 }
 
+table.leaderboard {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+table.leaderboard th,
+table.leaderboard td {
+  padding: 0.8rem;
+  text-align: center;
+  color: white;
+}
+
+table.leaderboard th {
+  background-color: rgba(238, 69, 64, 0.2);
+  font-weight: bold;
+}
+
+table.leaderboard tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ----------- Forms ----------- */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="text"] {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: none;
+  width: 80%;
+  max-width: 300px;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ----------- Responsive Tweaks ----------- */
 @media (max-width: 600px) {
-  .options {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .movie-btn {
-    font-size: 1rem;
-    width: 90%;
-    padding: 1rem;
-  }
-
-  .hint-btn {
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
+  .card {
+    padding: 1.5rem 1rem;
   }
 
   .logo {
     width: 120px;
     margin-bottom: 1rem;
   }
-}
 
-.card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 2px solid #fff;
-  border-radius: 16px;
-  padding: 2rem;
-  width: 90%;
-  max-width: 400px;
-  margin: 6rem auto;
-  text-align: center;
-  color: white;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
+  table.leaderboard th,
+  table.leaderboard td {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
 
-.poster {
-  width: 50%;
-  max-width: 250px;
-  margin-top: 1rem;
-  border-radius: 8px;
+  .hint-btn,
+  button,
+  input[type="submit"] {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
 }

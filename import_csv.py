@@ -34,7 +34,8 @@ df = df.rename(columns={
 })
 
 # Fix types
-df["year"] = pd.to_numeric(df["year"], errors="coerce")
+df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
+
 df["meta_score"] = pd.to_numeric(df["meta_score"], errors="coerce")
 df["votes"] = pd.to_numeric(df["votes"], errors="coerce")
 df["imdb_rating"] = pd.to_numeric(df["imdb_rating"], errors="coerce")

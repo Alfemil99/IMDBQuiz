@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="animated-bg"></div>
+    
     <div class="card">
         <h1>Guess the movie!</h1>
 
@@ -13,6 +15,28 @@
             <input type="text" id="username" name="username" required><br><br>
             <button type="submit" class="hint-btn">START</button>
         </form>
+
+        <div class="leaderboard-container">
+        <h2>Leaderboard</h2>
+        <table class="leaderboard">
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entry in leaderboard %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.score }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
 
     </div>
 </body>

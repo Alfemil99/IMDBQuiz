@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, session, request, redirect, url_for
+from flask import Blueprint, render_template, session, request, redirect, url_for, flash
 from app.models import Movie
 from app.game import get_round_data
 from app.leaderboard import insert_score, get_top_scores
+import re
 
 main = Blueprint("main", __name__)
 
@@ -13,10 +14,18 @@ def index():
 @main.route("/start", methods=["GET", "POST"])
 def start():
     if request.method == "POST":
-        session["username"] = request.form["username"]
+        username = request.form.get("username", "").strip()
+
+        # Validering: Kun bogstaver og mellemrum, 2-30 tegn
+        if not re.match(r'^[A-Za-zÆØÅæøå\s]{2,30}$', username):
+            flash("Navnet skal kun indeholde bogstaver og være 2-30 tegn langt.")
+            return redirect(url_for("main.index"))
+
+        session["username"] = username
         session["score"] = 0
         return redirect(url_for("main.game"))
     return render_template("start.html")
+
 
 @main.route("/game")
 def game():

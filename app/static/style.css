@@ -1,3 +1,11 @@
+:root {
+  --first-color: #2d132c;   /* mørk baggrund */
+  --second-color: #801336;    /* kontrast baggrund */
+  --third-color: #c72c41;     /* accentfarve */
+  --fourth-color: #ee4540;  /* tekst og lys */
+  --white-color: #ffffff;
+} 
+
 /* ----------- Base Layout ----------- */
 body {
   margin: 0;
@@ -7,9 +15,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: radial-gradient(ellipse at center, #2d132c 0%, #801336 40%, #c72c41 70%, #ee4540 100%);
+  background: radial-gradient(ellipse at center, var(--first-color) 0%, var(--second-color) 40%, var(--third-color) 70%, var(--fourth-color) 100%);
   font-family: 'Segoe UI', sans-serif;
-  color: white;
+  color: var(--white-color);
   text-align: center;
 }
 
@@ -20,10 +28,10 @@ body {
   left: 0;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 20% 30%, #2d132c 0%, transparent 50%),
-              radial-gradient(circle at 70% 40%, #801336 0%, transparent 50%),
-              radial-gradient(circle at 40% 70%, #c72c41 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, #ee4540 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 30%, var(--first-color) 0%, transparent 50%),
+              radial-gradient(circle at 70% 40%, var(--second-color) 0%, transparent 50%),
+              radial-gradient(circle at 40% 70%, var(--third-color) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, var(--fourth-color) 0%, transparent 50%);
   animation: moveBackground 20s ease-in-out infinite alternate;
   filter: blur(80px);
   z-index: -1;
@@ -38,7 +46,7 @@ body {
 /* ----------- Card Containers ----------- */
 .card {
   background-color: rgba(255, 255, 255, 0.05);
-  border: 2px solid #fff;
+  border: 2px solid var(--white-color);
   border-radius: 16px;
   padding: 2rem;
   width: 90%;
@@ -74,13 +82,14 @@ button,
 input[type="submit"] {
   display: inline-block;
   margin-top: 1rem;
+  margin: 1rem auto;
   padding: 0.8rem 1.4rem;
   font-weight: bold;
   font-size: 1rem;
-  border: 2px solid #ee4540;
+  border: 2px solid var(--third-color);
   border-radius: 12px;
-  color: #ee4540;
-  background-color: rgba(238, 69, 64, 0.05);
+  color: var(--third-color);
+  background-color: rgba(249, 109, 0, 0.05);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -89,7 +98,7 @@ input[type="submit"] {
 .hint-btn:hover,
 button:hover,
 input[type="submit"]:hover {
-  background-color: rgba(238, 69, 64, 0.15);
+  background-color: rgba(249, 109, 0, 0.15);
   transform: scale(1.05);
 }
 
@@ -107,10 +116,10 @@ input[type="submit"]:hover {
 .movie-btn {
   width: 100%;
   padding: 1.2rem 1rem;
-  border: 2px solid white;
+  border: 2px solid var(--white-color);
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.05);
-  color: white;
+  color: var(--white-color);
   font-size: 1rem;
   text-align: center;
   text-decoration: none;
@@ -153,11 +162,11 @@ table.leaderboard th,
 table.leaderboard td {
   padding: 0.8rem;
   text-align: center;
-  color: white;
+  color: var(--white-color);
 }
 
 table.leaderboard th {
-  background-color: rgba(238, 69, 64, 0.2);
+  background-color: rgba(249, 109, 0, 0.2);
   font-weight: bold;
 }
 

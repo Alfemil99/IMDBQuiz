@@ -1,7 +1,6 @@
 from app.db import db_cursor, conn
 from app.models import LeaderboardEntry
 
-
 def insert_score(username, score):
     try:
         sql = """
@@ -14,8 +13,6 @@ def insert_score(username, score):
         conn.rollback()
         print("Error inserting score:", e)
         raise
-
-
 
 def get_top_scores(limit=10):
     sql = """

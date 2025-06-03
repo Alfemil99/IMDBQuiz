@@ -9,18 +9,17 @@
 /* ----------- Base Layout ----------- */
 body {
   margin: 0;
-  padding: 0;
+  padding: 1rem;
   min-height: 100vh;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   background: radial-gradient(ellipse at center, var(--first-color) 0%, var(--second-color) 40%, var(--third-color) 70%, var(--fourth-color) 100%);
   font-family: 'Segoe UI', sans-serif;
   color: var(--white-color);
   text-align: center;
-  position: relative;
 }
-
 
 /* ----------- Animated Background ----------- */
 .animated-bg {
@@ -52,7 +51,7 @@ body {
   padding: 2rem;
   width: 90%;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 3rem auto;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
@@ -235,14 +234,6 @@ input[type="text"] {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-.poster-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.5rem;
-=======
 .reset-wrapper {
   margin-top: 20px;
   text-align: center; 
@@ -320,5 +311,13 @@ input[type="text"] {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
->>>>>>> 312a22cd83278cfee53380355e145cae8bc35e59
+}
+
+
+.poster-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
 }

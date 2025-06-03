@@ -127,3 +127,7 @@ def result():
     return render_template("result.html",
                            result=result,
                            correct_movie=correct_movie)
+@main.route("/reset")
+def reset():
+    session.clear()  # Nulstiller hele spillet
+    return redirect(url_for("main.index"))

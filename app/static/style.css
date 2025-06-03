@@ -233,3 +233,27 @@ input[type="text"] {
   margin: 0;
   font-weight: bold;
 }
+
+.reset-wrapper {
+  margin-top: 20px;
+  text-align: center; 
+}
+
+
+.reset-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.reset-btn {
+  display: inline-block;
+  margin: 0 auto;
+}
+

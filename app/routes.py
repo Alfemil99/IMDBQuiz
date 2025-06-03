@@ -8,6 +8,7 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def index():
+    # Display the homepage with the leaderboard
     leaderboard = get_top_scores()
     return render_template("index.html", leaderboard=leaderboard)
 
@@ -16,32 +17,38 @@ def start():
     if request.method == "POST":
         username = request.form.get("username", "").strip()
 
-        # Validering: Kun bogstaver og mellemrum, 2-30 tegn
+        # Validate only letters and spaces, 2–30 characters long
         if not re.match(r'^[A-Za-zÆØÅæøå\s]{2,30}$', username):
-            flash("Navnet skal kun indeholde bogstaver og være 2-30 tegn langt.")
+            flash("The name must only contain letters and be 2–30 characters long.")
             return redirect(url_for("main.index"))
 
+        # Save username and reset score
         session["username"] = username
         session["score"] = 0
         return redirect(url_for("main.game"))
+    
+    # Show the start screen
     return render_template("start.html")
 
 
 @main.route("/game")
 def game():
+    # If no username in session, redirect to start page
     if "username" not in session:
         return redirect(url_for("main.index"))
 
+    # If no current round, initialize a new one
     if "round" not in session or "round_score" not in session:
         session["round"] = get_round_data()
-        session["hints_shown"] = 1        # første hint vises gratis
-        session["round_score"] = 600
+        session["hints_shown"] = 1        # Show first hint for free
+        session["round_score"] = 600      # Start score for the round
 
     round_data = session["round"]
     movie_ids = round_data["option_ids"]
     options = Movie.query.filter(Movie.id.in_(movie_ids)).all()
     options.sort(key=lambda m: movie_ids.index(m.id))
 
+    # Render the game screen
     return render_template("game.html",
                            round=round_data,
                            hints_shown=session.get("hints_shown", 1),
@@ -52,6 +59,7 @@ def game():
 
 @main.route("/reveal_hint")
 def reveal_hint():
+    # Show an additional hint if fewer than 5 shown
     if session.get("hints_shown", 1) < 5:
         session["round_score"] = session.get("round_score", 600) - 100
         session["hints_shown"] += 1
@@ -63,15 +71,18 @@ def guess(movie_id):
     round_data = session.get("round")
     if not round_data:
         return redirect(url_for("main.game"))
-
+    
+    # Check if the guessed movie is correct
     guess_correct = movie_id == round_data["correct_id"]
 
     if guess_correct:
+        # Add round score to total score
         session["score"] = session.get("score", 0) + session.get("round_score", 0)
         session["result"] = "correct"
     else:
         session["result"] = "wrong"
 
+     # Save last round and guess for result screen
     session["last_round"] = round_data
     session["last_guess"] = movie_id
 
@@ -91,10 +102,13 @@ def result():
     movie_ids = round_data["option_ids"]
     options = Movie.query.filter(Movie.id.in_(movie_ids)).all()
     options.sort(key=lambda m: movie_ids.index(m.id))
+
+    # Identify guessed and correct movies
     guessed_movie = next((m for m in options if m.id == guess_id), None)
     correct_movie = next((m for m in options if m.id == round_data["correct_id"]), None)
 
     if result == "wrong":
+        # Game over: save score and show leaderboard
         final_score = score
         username = session.get("username", "Anonymous")
         insert_score(username, final_score)
@@ -102,7 +116,7 @@ def result():
         session.clear()
         return render_template("gameover.html", score=final_score, correct_movie=correct_movie, leaderboard=leaderboard)
 
-    # hvis korrekt → nulstil kun rundedata
+    # If correct guess, clear only round-related session data
     session.pop("round", None)
     session.pop("hints_shown", None)
     session.pop("round_score", None)

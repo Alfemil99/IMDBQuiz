@@ -1,9 +1,13 @@
 from app import db
 
+# Define the Movie model representing rows in the 'movies' table
 class Movie(db.Model):
     __tablename__ = 'movies'
 
+    # Primary key column
     id = db.Column(db.Integer, primary_key=True)
+
+    # Others
     poster_link = db.Column(db.Text)
     title = db.Column(db.Text)
     year = db.Column(db.Integer)
@@ -21,6 +25,8 @@ class Movie(db.Model):
     votes = db.Column(db.Integer)
     gross = db.Column(db.Text)
 
+
+# Define a simple class to represent a leaderboard entry
 class LeaderboardEntry:
     def __init__(self, data):
         self.id = data.get('id')

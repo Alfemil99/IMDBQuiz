@@ -257,3 +257,58 @@ input[type="text"] {
   margin: 0 auto;
 }
 
+/* ----------- Logo Header Design ----------- */
+.logo-container {
+  text-align: center;
+  margin-top: 3rem;
+  animation: fadeIn 1s ease-in-out;
+  margin-bottom: 3rem;
+}
+
+.logo-title {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: var(--white-color);
+}
+
+.logo-marquee {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--white-color);
+  padding: 10px 20px;
+  border-radius: 12px;
+  animation: pulse 2.5s infinite;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+.logo-dots::before,
+.logo-dots::after {
+  content: "● ● ● ● ●";
+  color: var(--white-color);
+  font-size: 1rem;
+  margin: 0 10px;
+  animation: blink 1.2s infinite alternate;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

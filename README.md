@@ -117,4 +117,9 @@ myapp/
 - Flask-Migrate for DB versioning
 
 ## How to play:
-You start the game at the main menu where you can see the leaderboard, and choose your player name for the next playthrough. When you have chosen your name and pressed start, the first hint appears. You start by getting one hint and four possible movies to guess. The hints start by being hard, but get progressively easier by pressing the hint button more. But be careful of getting too many hints. For each hint the amount of points you get by answering correctly is reduced. So if you want a high score you have to take some risks. If you answer correctly the game will show you that you guessed correctly, if not the you will see what the right movie was and be sent to the main menu again. If you guessed correctly a new movie has to be guessed. When you fail your score and name will be added to the leaderboard from highest to lowest.
+* You start the game at the main menu where you can see the leaderboard.
+* You then choose your player name for the next playthrough. When you have chosen your name and pressed start, the first hint appears.
+* You start by getting one hint and four possible movies to guess. The hints start by being hard, but get progressively easier by pressing the hint button more. But be careful of getting too many hints. For each hint the amount of points you get by answering correctly is reduced. So if you want a high score you have to take some risks.
+* If you answer correctly the game will show you that you guessed correctly, if not the you will see what the right movie was and be sent to the main menu again.
+* If you guessed correctly a new movie has to be guessed.
+* When you fail your score and name will be added to the leaderboard from highest to lowest.

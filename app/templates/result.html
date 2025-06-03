@@ -10,13 +10,13 @@
 
   <div class="card">
     <h2 class="correct-title">✅ Correct!</h2>
-
     <p>The correct movie was:</p>
     <h3>{{ correct_movie.title }}</h3>
 
-    <img class="poster" src="{{ correct_movie.poster_link }}" alt="Poster">
-
-    <a href="{{ url_for('main.game') }}" class="hint-btn">Next Round</a>
+    <div class="poster-container">
+      <img class="poster" src="{{ correct_movie.poster_link }}" alt="Poster">
+      <a href="{{ url_for('main.game') }}" class="hint-btn">Next Round</a>
+    </div>
   </div>
 </body>
 </html>

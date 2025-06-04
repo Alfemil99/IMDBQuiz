@@ -1,5 +1,7 @@
 # IMDB Quiz
 
+![Landing Page](GUESSMOVIE.png)
+
 - Python + Flask
 - PostgreSQL (with SQLAlchemy and regular SQL)
 - HTML + CSS3

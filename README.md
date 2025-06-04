@@ -111,3 +111,5 @@ Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) to test.
 * If you answer correctly the game will show you that you guessed correctly, if not the you will see what the right movie was and be sent to the main menu again.
 * If you guessed correctly a new movie has to be guessed.
 * When you fail your score and name will be added to the leaderboard from highest to lowest.
+
+![Example](Ex1.png)

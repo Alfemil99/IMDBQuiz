@@ -129,5 +129,5 @@ def result():
                            correct_movie=correct_movie)
 @main.route("/reset")
 def reset():
-    session.clear()  # Nulstiller hele spillet
+    session.clear()  # Resets Game
     return redirect(url_for("main.index"))

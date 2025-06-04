@@ -3,14 +3,14 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
 
-# Load .env file
+# Load .env file,
 load_dotenv()
 
-# Build DB connection string
+# Build DB connection string,
 db_url = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
 engine = create_engine(db_url)
 
-# Load and clean CSV
+# Load and clean CSV,
 df = pd.read_csv("IMDB.csv", encoding="utf-8")
 
 df = df.rename(columns={
@@ -35,12 +35,21 @@ df = df.rename(columns={
 
 # Fix types
 df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
-
 df["meta_score"] = pd.to_numeric(df["meta_score"], errors="coerce")
 df["votes"] = pd.to_numeric(df["votes"], errors="coerce")
 df["imdb_rating"] = pd.to_numeric(df["imdb_rating"], errors="coerce")
 
-# Upload to database (append only)
+# Upload to database (append only),
 df.to_sql("movies", engine, if_exists="append", index=False)
 
 print("CSV data added to movies table.")
+
+# --- Load and upload leaderboard.csv ---
+df_leaderboard = pd.read_csv("leaderboard.csv", encoding="utf-8")
+
+# Optional: convert datetime column
+df_leaderboard["played_at"] = pd.to_datetime(df_leaderboard["played_at"], errors="coerce")
+
+# Upload
+df_leaderboard.to_sql("leaderboard", engine, if_exists="append", index=False)
+print("leaderboard.csv data added to leaderboard table.")

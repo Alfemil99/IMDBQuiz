@@ -1,6 +1,6 @@
 # IMDB Quiz
 
-![Landing Page](GUESSMOVIE.png)
+![Landing Page](img/GUESSMOVIE.png)
 
 - Python + Flask
 - PostgreSQL (with SQLAlchemy and regular SQL)
@@ -10,7 +10,7 @@
 ---
 
 ## ER-Diagram
-![ER-diagram](imdbER.png)
+![ER-diagram](img/imdbER.png)
 
 ---
 
@@ -112,4 +112,4 @@ Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) to test.
 * If you guessed correctly a new movie has to be guessed.
 * When you fail your score and name will be added to the leaderboard from highest to lowest.
 
-![Example](Ex1.png)
+![Example](img/Ex1.png)

@@ -40,7 +40,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-#### If error on 'python -m venv venv' try:
+#### If error on 'venv\Scripts\activate' try:
 ```bash
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```

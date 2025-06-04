@@ -20,8 +20,8 @@
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/Alfemil99/IMDBQuiz/tree/main
-cd <your-repo>
+git clone https://github.com/Alfemil99/IMDBQuiz.git
+cd IMDBQuiz
 ```
 
 ### 2. Create Virtual Environment

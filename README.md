@@ -51,15 +51,43 @@ Log into psql and run:
 CREATE DATABASE myappdb;
 CREATE USER myuser WITH PASSWORD 'mypassword';
 GRANT ALL PRIVILEGES ON DATABASE myappdb TO myuser;
+
+\c myappdb
+
+CREATE TABLE leaderboard (
+    id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+GRANT USAGE ON SCHEMA public TO myuser;
+GRANT CREATE ON SCHEMA public TO myuser;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON leaderboard TO myuser;
+GRANT USAGE, SELECT ON SEQUENCE leaderboard_id_seq TO myuser;
+
 ```
 
 ---
 
-## 🧪 Run the App
+## 5. Import the csv databse
+
+Run import_csv.py
+
+```bash
+python import_csv.py
+```
+---
+
+## 6. Run the code
+
+Run the code
 
 ```bash
 python run.py
 ```
+
 
 Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) to test.
 

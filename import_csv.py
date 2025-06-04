@@ -11,7 +11,7 @@ db_url = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.ge
 engine = create_engine(db_url)
 
 # Load and clean CSV,
-df = pd.read_csv("IMDB.csv", encoding="utf-8")
+df = pd.read_csv("data/IMDB.csv", encoding="utf-8")
 
 df = df.rename(columns={
     "Id": "id",
@@ -45,7 +45,7 @@ df.to_sql("movies", engine, if_exists="append", index=False)
 print("CSV data added to movies table.")
 
 # --- Load and upload leaderboard.csv ---
-df_leaderboard = pd.read_csv("leaderboard.csv", encoding="utf-8")
+df_leaderboard = pd.read_csv("data/leaderboard.csv", encoding="utf-8")
 
 # Optional: convert datetime column
 df_leaderboard["played_at"] = pd.to_datetime(df_leaderboard["played_at"], errors="coerce")

@@ -1,22 +1,18 @@
 # IMDB Quiz
 
 - Python + Flask
-- PostgreSQL (via SQLAlchemy)
+- PostgreSQL (with SQLAlchemy and regular SQL)
 - HTML + CSS3
 - Environment Variables via `.env`
 
 ---
 
-## 🚀 Features
-
-- Modular Flask project layout
-- PostgreSQL integration with SQLAlchemy
-- Environment variable config using `python-dotenv`
-- Pre-wired for team collaboration and expansion
+## ER-Diagram
+![ER-diagram](imdbER.png)
 
 ---
 
-## 🛠️ Setup Guide
+## Setup Guide
 
 ### 1. Clone the Repo
 
@@ -58,7 +54,7 @@ If you're using other informations on your .env, be sure to use these for the ps
 
 ### 4. Set Up the Database Locally
 
-Log into psql and run:
+log into SQL Shell and paste this code to activate a new database, with leaderboard table:
 
 ```sql
 CREATE DATABASE myappdb;

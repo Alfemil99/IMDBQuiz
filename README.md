@@ -7,6 +7,7 @@
 - HTML + CSS3
 - Environment Variables via `.env`
 
+- Data: https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
 ---
 
 ## ER-Diagram

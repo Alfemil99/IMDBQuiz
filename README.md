@@ -35,7 +35,7 @@ pip install -r requirements.txt
 #### Windows
 ```bash
 python -m venv venv
-venv\Scripts\activate (Might have to use "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass")
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 

@@ -26,11 +26,23 @@ cd <your-repo>
 ```
 
 ### 2. Create Virtual Environment
-
+#### Mac
 ```bash
 python -m venv venv
-source venv/bin/activate       # On Windows: venv\Scripts\activate
+source venv/bin/activate
 pip install -r requirements.txt
+```
+
+#### Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### If error on 'python -m venv venv' try:
+```bash
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 ### 3. Configure Environment Variables
@@ -42,6 +54,7 @@ cp .env.example .env
 ```
 
 Update `.env` with your local PostgreSQL credentials.
+If you're using other informations on your .env, be sure to use these for the psql steps to minimize reisk of error.
 
 ### 4. Set Up the Database Locally
 
@@ -71,9 +84,9 @@ GRANT USAGE, SELECT ON SEQUENCE leaderboard_id_seq TO myuser;
 
 ---
 
-## 5. Import the csv databse
+## 5. Import the csv database
 
-Run import_csv.py
+Run import_csv.py to insert IMDB.csv and leaderboard.csv data into PSQL
 
 ```bash
 python import_csv.py
@@ -92,57 +105,6 @@ python run.py
 Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) to test.
 
 ---
-
-## 👥 Team Workflow
-
-### Working in Groups:
-
-- Use **branches** for new features:
-  ```bash
-  git checkout -b feature/some-feature
-  ```
-
-- Submit **pull requests** to `main` after pushing
-- Use `.env.example` to help teammates sync environments
-
----
-
-## 📦 Tech Stack
-
-| Layer     | Tool                |
-|-----------|---------------------|
-| Backend   | Flask (Python)      |
-| Database  | PostgreSQL          |
-| ORM       | SQLAlchemy          |
-| Styling   | HTML + CSS3         |
-| Config    | `dotenv` (`.env`)   |
-| Versioning| Git + GitHub        |
-
----
-
-## 📂 Project Structure
-
-```bash
-myapp/
-├── app/
-│   ├── templates/       # HTML files
-│   ├── static/          # CSS/JS assets
-│   ├── routes.py        # Flask routes
-│   └── __init__.py      # App + DB setup
-├── config.py            # Loads DB settings from .env
-├── .env.example         # Env variable template
-├── run.py               # Entry point
-├── requirements.txt
-└── README.md
-```
-
----
-
-## ✅ Coming Soon (Optional Add-ons)
-
-- User authentication
-- Shared hosted PostgreSQL instance (e.g., Render)
-- Flask-Migrate for DB versioning
 
 ## How to play:
 * You start the game at the main menu where you can see the leaderboard.
